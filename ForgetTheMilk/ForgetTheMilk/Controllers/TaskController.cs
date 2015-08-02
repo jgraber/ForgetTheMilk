@@ -13,13 +13,19 @@ namespace ForgetTheMilk.Controllers
             return View(Tasks);
         }
 
-        public static readonly List<string> Tasks = new List<string>();
+        public static readonly List<Task> Tasks = new List<Task>();
 
         [HttpPost]
         public ActionResult Add(string task)
         {
-            Tasks.Add(task);
+            Tasks.Add(new Task() {Description = task});
             return RedirectToAction("Index");
         }
+    }
+
+    public class Task
+    {
+        public string Description { get; set; }
+        public DateTime DueDate { get; set; }
     }
 }
