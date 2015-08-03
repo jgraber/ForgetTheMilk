@@ -25,7 +25,7 @@
                 @task.Description
             </td>
             <td>
-                @task.DueDate.ToShortDateString()
+                @(task.DueDate.HasValue ? task.DueDate.Value.ToShortDateString() : "")
             </td>
         </tr>
     }
