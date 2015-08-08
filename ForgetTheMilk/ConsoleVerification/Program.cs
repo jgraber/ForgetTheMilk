@@ -2,14 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using ForgetTheMilk.Controllers;
 
 namespace ConsoleVerification
 {
     class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
+            while (true)
+            {
+                Console.WriteLine("Add a task:");
+                var input = Console.ReadLine();
+                var task = new Task(input);
+                Console.WriteLine("Description: " + task.Description);
+                Console.WriteLine("Due date: " + task.DueDate);
+                Console.WriteLine();
+            }
         }
     }
 }
