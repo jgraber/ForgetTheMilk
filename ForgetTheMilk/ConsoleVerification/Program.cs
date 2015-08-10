@@ -11,15 +11,36 @@ namespace ConsoleVerification
         private static void Main(string[] args)
         {
             var input = "Pickup the groceries";
+            Console.WriteLine("Scenario: " + input);
             var task = new Task(input);
-            Console.WriteLine("Description: " + task.Description);
-            Console.WriteLine("Due date: " + task.DueDate);
+            var descriptionShouldBe = input;
+            DateTime? dueDateShouldBe = null;
+            if (descriptionShouldBe == task.Description
+                && dueDateShouldBe == task.DueDate)
+            {
+                Console.WriteLine("SUCCESS");
+            }
+            else
+            {
+                Console.WriteLine("Description: " + task.Description + " should be " + descriptionShouldBe);
+                Console.WriteLine("Due date: " + task.DueDate + "should be " + dueDateShouldBe);
+                Console.WriteLine("ERROR");
+            }
             Console.WriteLine();
 
             input = "Pickup the groceries may 5";
+            Console.WriteLine("Scenario: " + input);
             task = new Task(input);
-            Console.WriteLine("Description: " + task.Description);
-            Console.WriteLine("Due date: " + task.DueDate);
+            dueDateShouldBe = new DateTime(DateTime.Today.Year, 5, 5);
+            if (dueDateShouldBe == task.DueDate)
+            {
+                Console.WriteLine("SUCCESS");
+            }
+            else
+            {
+                Console.WriteLine("Due date: " + task.DueDate + "should be " + dueDateShouldBe);
+                Console.WriteLine("ERROR");
+            }
             Console.WriteLine();
 
             Console.ReadLine();
