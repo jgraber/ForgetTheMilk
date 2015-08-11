@@ -10,6 +10,15 @@ namespace ConsoleVerification
     {
         private static void Main(string[] args)
         {
+            TestDescriptionAndNoDueDate();
+
+            TestMayDueDate();
+
+            Console.ReadLine();
+        }
+
+        private static void TestDescriptionAndNoDueDate()
+        {
             var input = "Pickup the groceries";
             Console.WriteLine("Scenario: " + input);
             var task = new Task(input);
@@ -27,11 +36,14 @@ namespace ConsoleVerification
                 Console.WriteLine("ERROR");
             }
             Console.WriteLine();
+        }
 
-            input = "Pickup the groceries may 5";
+        private static void TestMayDueDate()
+        {
+            var input = "Pickup the groceries may 5";
             Console.WriteLine("Scenario: " + input);
-            task = new Task(input);
-            dueDateShouldBe = new DateTime(DateTime.Today.Year, 5, 5);
+            var task = new Task(input);
+            var dueDateShouldBe = new DateTime(DateTime.Today.Year, 5, 5);
             if (dueDateShouldBe == task.DueDate)
             {
                 Console.WriteLine("SUCCESS");
@@ -42,8 +54,6 @@ namespace ConsoleVerification
                 Console.WriteLine("ERROR");
             }
             Console.WriteLine();
-
-            Console.ReadLine();
         }
     }
 }
