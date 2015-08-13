@@ -11,8 +11,9 @@ namespace ConsoleVerification
         private static void Main(string[] args)
         {
             TestDescriptionAndNoDueDate();
+            TestMayDueDateDoesWrapYear();
+            TestMayDueDateDoesNotWrapYear();
 
-            TestMayDueDate();
 
             Console.ReadLine();
         }
@@ -22,7 +23,7 @@ namespace ConsoleVerification
             var input = "Pickup the groceries";
             Console.WriteLine("Scenario: " + input);
 
-            var task = new Task(input);
+            var task = new Task(input, default(DateTime));
 
             var descriptionShouldBe = input;
             DateTime? dueDateShouldBe = null;
@@ -48,16 +49,31 @@ namespace ConsoleVerification
             Console.WriteLine();
         }
 
-        private static void TestMayDueDate()
+        private static void TestMayDueDateDoesWrapYear()
         {
-            var input = "Pickup the groceries may 5";
+            var input = "Pickup the groceries may 5 - as of 2015-05-31";
             Console.WriteLine("Scenario: " + input);
+            var today = new DateTime(2015, 5, 31);
 
-            var task = new Task(input);
+            var task = new Task(input, today);
+
+            var dueDateShouldBe = new DateTime(2016, 5, 5);
+            var success = dueDateShouldBe == task.DueDate;
+            var failureMessage = "Due date: " + task.DueDate + "should be " + dueDateShouldBe;
+            PrintOutcome(success, failureMessage);
+        }
+
+        private static void TestMayDueDateDoesNotWrapYear()
+        {
+            var input = "Pickup the groceries may 5 - as of 2015-05-04";
+            Console.WriteLine("Scenario: " + input);
+            var today = new DateTime(2015, 5, 4);
+
+            var task = new Task(input, today);
 
             var dueDateShouldBe = new DateTime(DateTime.Today.Year, 5, 5);
             var success = dueDateShouldBe == task.DueDate;
-            var failureMessage = "Due date: " + task.DueDate + "should be " + dueDateShouldBe;
+            var failureMessage = "Due date: " + task.DueDate + " should be " + dueDateShouldBe;
             PrintOutcome(success, failureMessage);
         }
     }

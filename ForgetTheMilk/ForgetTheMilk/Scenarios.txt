@@ -1,10 +1,10 @@
 ﻿Existing scenarios:
 - Description without a due date
 - Description with a due date - format may 5
+	- wrap year if the day is already past in this year
+	- don't wrap year if the day is not past in this year
 
 Future scenarios:
 - Due Date year
-	- wrap year if the day is already past in this year
-	- don't wrap year if the day is not past in this year
 	- user might want to supply a year
 - Due Date month - other than may
