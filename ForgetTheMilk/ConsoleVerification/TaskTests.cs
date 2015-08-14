@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ForgetTheMilk.Controllers;
+using NUnit.Framework;
 
 namespace ConsoleVerification
 {
     public class TaskTests
     {
+        [Test]
         public void TestDescriptionAndNoDueDate()
         {
             var input = "Pickup the groceries";
