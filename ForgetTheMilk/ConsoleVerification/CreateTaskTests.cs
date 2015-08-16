@@ -7,14 +7,13 @@ using NUnit.Framework;
 
 namespace ConsoleVerification
 {
-    public class TaskTests
+    public class CreateTaskTests
     {
         [Test]
         public void TestDescriptionAndNoDueDate()
         {
             var input = "Pickup the groceries";
-            Console.WriteLine("Scenario: " + input);
-
+            
             var task = new Task(input, default(DateTime));
 
             var descriptionShouldBe = input;
