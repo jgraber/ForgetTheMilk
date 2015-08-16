@@ -24,7 +24,7 @@ namespace ConsoleVerification
             var failureMessage = "Description: " + task.Description + " should be " + descriptionShouldBe
                                  + Environment.NewLine
                                  + "Due date: " + task.DueDate + "should be " + dueDateShouldBe;
-            Program.PrintOutcome(success, failureMessage);
+            Assert.That(success, failureMessage);
         }
     }
 }
