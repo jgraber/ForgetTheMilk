@@ -20,18 +20,15 @@ namespace ConsoleVerification
             Assert.AreEqual(null, task.DueDate);
         }
 
-        private static void TestMayDueDateDoesWrapYear()
+        [Test]
+        public void TestMayDueDateDoesWrapYear()
         {
             var input = "Pickup the groceries may 5 - as of 2015-05-31";
-            Console.WriteLine("Scenario: " + input);
             var today = new DateTime(2015, 5, 31);
 
             var task = new Task(input, today);
 
-            var dueDateShouldBe = new DateTime(2016, 5, 5);
-            var success = dueDateShouldBe == task.DueDate;
-            var failureMessage = "Due date: " + task.DueDate + "should be " + dueDateShouldBe;
-            Program.PrintOutcome(success, failureMessage);
+            Expect(task.DueDate, Is.EqualTo(new DateTime(2016, 5, 5)));
         }
 
         private static void TestMayDueDateDoesNotWrapYear()
