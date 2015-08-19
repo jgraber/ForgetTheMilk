@@ -31,18 +31,15 @@ namespace ConsoleVerification
             Expect(task.DueDate, Is.EqualTo(new DateTime(2016, 5, 5)));
         }
 
-        private static void TestMayDueDateDoesNotWrapYear()
+        [Test]
+        public void TestMayDueDateDoesNotWrapYear()
         {
             var input = "Pickup the groceries may 5 - as of 2015-05-04";
-            Console.WriteLine("Scenario: " + input);
             var today = new DateTime(2015, 5, 4);
 
             var task = new Task(input, today);
 
-            var dueDateShouldBe = new DateTime(DateTime.Today.Year, 5, 5);
-            var success = dueDateShouldBe == task.DueDate;
-            var failureMessage = "Due date: " + task.DueDate + " should be " + dueDateShouldBe;
-            Program.PrintOutcome(success, failureMessage);
+            Expect(task.DueDate, Is.EqualTo(new DateTime(DateTime.Today.Year, 5, 5)));
         }
     }
 }
