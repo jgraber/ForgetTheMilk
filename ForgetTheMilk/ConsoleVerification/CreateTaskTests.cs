@@ -41,5 +41,18 @@ namespace ConsoleVerification
 
             Expect(task.DueDate, Is.EqualTo(new DateTime(DateTime.Today.Year, 5, 5)));
         }
+
+        [Test]
+        public void AprilDueDate()
+        {
+            var input = "Groceries apr 5";
+            var today = new DateTime(2015, 5, 31);
+
+            var task = new Task(input, today);
+
+            Expect(task.DueDate, Is.Not.Null);
+            Expect(task.DueDate.Value.Month, Is.EqualTo(4));
+        }
+
     }
 }
