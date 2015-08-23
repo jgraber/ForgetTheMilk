@@ -55,7 +55,6 @@ namespace ConsoleVerification
         [TestCase("Groceries oct 5", 10)]
         [TestCase("Groceries nov 5", 11)]
         [TestCase("Groceries dec 5", 12)]
-
         public void DueDate(string input, int expectedMonth)
         {
             var today = new DateTime(2015, 5, 31);
