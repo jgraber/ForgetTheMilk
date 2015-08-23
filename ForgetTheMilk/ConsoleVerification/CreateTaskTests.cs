@@ -10,7 +10,7 @@ namespace ConsoleVerification
     public class CreateTaskTests : AssertionHelper
     {
         [Test]
-        public void TestDescriptionAndNoDueDate()
+        public void DescriptionAndNoDueDate()
         {
             var input = "Pickup the groceries";
             
@@ -21,7 +21,7 @@ namespace ConsoleVerification
         }
 
         [Test]
-        public void TestMayDueDateDoesWrapYear()
+        public void MayDueDateDoesWrapYear()
         {
             var input = "Pickup the groceries may 5 - as of 2015-05-31";
             var today = new DateTime(2015, 5, 31);
@@ -32,7 +32,7 @@ namespace ConsoleVerification
         }
 
         [Test]
-        public void TestMayDueDateDoesNotWrapYear()
+        public void MayDueDateDoesNotWrapYear()
         {
             var input = "Pickup the groceries may 5 - as of 2015-05-04";
             var today = new DateTime(2015, 5, 4);
