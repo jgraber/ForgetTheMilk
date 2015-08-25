@@ -57,9 +57,7 @@ namespace ConsoleVerification
         [TestCase("Groceries dec 5", 12)]
         public void DueDate(string input, int expectedMonth)
         {
-            var today = new DateTime(2015, 5, 31);
-
-            var task = new Task(input, today);
+            var task = new Task(input, default(DateTime));
 
             Expect(task.DueDate, Is.Not.Null);
             Expect(task.DueDate.Value.Month, Is.EqualTo(expectedMonth));
