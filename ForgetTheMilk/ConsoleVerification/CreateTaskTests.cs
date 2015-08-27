@@ -29,7 +29,7 @@ namespace ConsoleVerification
 
             var task = new Task(input, today);
 
-            Expect(task.DueDate, Is.EqualTo(new DateTime(2016, 5, 5)));
+            Expect(task.DueDate.Value.Year, Is.EqualTo(2016));
         }
 
         [Test]
