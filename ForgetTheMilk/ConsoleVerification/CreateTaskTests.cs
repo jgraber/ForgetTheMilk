@@ -82,5 +82,16 @@ namespace ConsoleVerification
 
             Expect(task.DueDate, Is.Null);
         }
+
+        [Test]
+        public void AddFeb29TaskInMarchOfYearBeforeLeapYear_ParsesDueDate()
+        {
+            var input = "Groceries feb 29";
+            var today = new DateTime(2015, 3, 1);
+
+            var task = new Task(input, today);
+
+            Expect(task.DueDate, Is.EqualTo(new DateTime(2016, 2, 29)));
+        }
     }
 }

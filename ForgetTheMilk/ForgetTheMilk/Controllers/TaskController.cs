@@ -40,13 +40,14 @@ namespace ForgetTheMilk.Controllers
                 var month = DateTime.ParseExact(monthInput, "MMM", CultureInfo.CreateSpecificCulture("en-US")).Month;
                 var day = Convert.ToInt32(dueDate.Groups[2].Value);
                 var year = today.Year;
+                var shouldWrapYear = month < today.Month || (month == today.Month && day < today.Day);
+                if (shouldWrapYear)
+                {
+                    year++;
+                }
                 if (day <= DateTime.DaysInMonth(year, month))
                 {
-                    DueDate = new DateTime(today.Year, month, day);
-                    if (DueDate < today)
-                    {
-                        DueDate = DueDate.Value.AddYears(1);
-                    }
+                    DueDate = new DateTime(year, month, day);
                 }
             }
         }
