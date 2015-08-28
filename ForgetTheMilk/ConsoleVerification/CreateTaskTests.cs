@@ -22,9 +22,9 @@ namespace ConsoleVerification
 
         [Test]
         [TestCase("Pickup the groceries may 5 - as of 2015-05-31")]
+        [TestCase("Pickup the groceries apr 5 - as of 2015-05-31")]
         public void MayDueDateDoesWrapYear(string input)
         {
-            //var input = "Pickup the groceries may 5 - as of 2015-05-31";
             var today = new DateTime(2015, 5, 31);
 
             var task = new Task(input, today);
