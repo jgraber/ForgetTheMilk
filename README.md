@@ -2,6 +2,7 @@
 Repo to code along the http://www.pluralsight.com/courses/confident-coding-automated-testing-aspdotnet-mvc course
 
 The course follows the path many developers go:
+
 1.	write the code and make manual checks
 2.	add a way to enter edge cases without the need to start the browser
 3.	write an application that verifies the output
