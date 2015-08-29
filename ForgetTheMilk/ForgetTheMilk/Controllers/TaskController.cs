@@ -50,8 +50,18 @@ namespace ForgetTheMilk.Controllers
                     DueDate = new DateTime(year, month, day);
                 }
             }
+
+            var linkPattern = new Regex(@"(http://[^\s]+)");
+            var hasLink = linkPattern.IsMatch(task);
+            if (hasLink)
+            {
+                var link = linkPattern.Match(task);
+                Link = link.Groups[1].Value;
+            }
         }
+
         public string Description { get; set; }
+        public string Link { get; set; }
         public DateTime? DueDate { get; set; }
     }
 }
