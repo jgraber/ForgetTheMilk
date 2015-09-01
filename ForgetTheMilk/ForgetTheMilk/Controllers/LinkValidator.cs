@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Net;
 
-namespace ConsoleVerification
+namespace ForgetTheMilk.Controllers
 {
     public class LinkValidator
     {
