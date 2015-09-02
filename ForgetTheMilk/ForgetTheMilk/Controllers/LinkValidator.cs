@@ -3,7 +3,7 @@ using System.Net;
 
 namespace ForgetTheMilk.Controllers
 {
-    public class LinkValidator
+    public class LinkValidator : ILinkValidator
     {
         public void Validate(string link)
         {
@@ -18,5 +18,10 @@ namespace ForgetTheMilk.Controllers
                 throw new ApplicationException("Invalid link " + link);
             }
         }
+    }
+
+    public interface ILinkValidator
+    {
+        void Validate(string link);
     }
 }
