@@ -18,5 +18,14 @@ namespace ConsoleVerification
 
             Expect(task.Link, Is.EqualTo("http://www.google.com"));
         }
+
+        [Test]
+        public void Validate_InvalidUrl_ThrowsException()
+        {
+            var input = "http://www.doesnotexistdotcom.com";
+
+            Expect(() => new Task(input, default(DateTime), new LinkValidator()),
+                Throws.Exception.With.Message.EqualTo("Invalid link " + input));
+        }
     }
 }
