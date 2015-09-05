@@ -20,7 +20,7 @@ namespace ForgetTheMilk.Controllers
         [HttpPost]
         public ActionResult Add(string task)
         {
-            var taskItem = new Task(task, DateTime.Today);
+            var taskItem = new Task(task, DateTime.Today, new LinkValidator());
             Tasks.Add(taskItem);
             return RedirectToAction("Index");
         }
@@ -28,7 +28,7 @@ namespace ForgetTheMilk.Controllers
 
     public class Task
     {
-        public Task(string task, DateTime today)
+        public Task(string task, DateTime today, ILinkValidator linkValidator = null)
         {
             Description = task;
             var dueDatePattern = new Regex(@"(jan|feb|mar|apr|may|jun|jul|aug|sep|oct|nov|dec)\s(\d+)");
@@ -55,8 +55,9 @@ namespace ForgetTheMilk.Controllers
             var hasLink = linkPattern.IsMatch(task);
             if (hasLink)
             {
-                var link = linkPattern.Match(task);
-                Link = link.Groups[1].Value;
+                var link = linkPattern.Match(task).Groups[1].Value;
+                linkValidator.Validate(link);
+                Link = link;
             }
         }
 
