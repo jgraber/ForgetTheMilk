@@ -9,12 +9,19 @@ namespace ConsoleVerification
 {
     public class TaskLinkTest : AssertionHelper
     {
+        class IgnoreLinkValidator : ILinkValidator
+        {
+            public void Validate(string link)
+            {
+            }
+        }
+
         [Test]
         public void CreateTask_DescriptionWithALink_SetLink()
         {
             var input = "test http://www.google.com";
 
-            var task = new Task(input, default(DateTime));
+            var task = new Task(input, default(DateTime), new IgnoreLinkValidator());
 
             Expect(task.Link, Is.EqualTo("http://www.google.com"));
         }
