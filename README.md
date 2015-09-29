@@ -1,5 +1,5 @@
-# ForgetTheMilk
-Repo to code along the http://www.pluralsight.com/courses/confident-coding-automated-testing-aspdotnet-mvc course
+# Forget The Milk
+Repo to code along the http://www.pluralsight.com/courses/confident-coding-automated-testing-aspdotnet-mvc course by Wes Higbee. It's a great example on how to automate testing in the real world.
 
 The course follows the path many developers go:
 
